@@ -1,0 +1,40 @@
+//Code Activity - Week 3
+//Art 22 Spring 22
+//Author: Anh Vuong
+//April 21, 2020
+
+float x, y; // position variables for point
+float xVel, yVel; //velocity variables for point
+float xDirection, yDirection; //direction variables for point
+float Gravity;//gravity variable
+
+void setup (){
+  size(600,600);
+  background(255); // set backgroung to white
+  //set initial position of point
+  x = 0;
+  y = height/4;
+  xVel =3; //velocity of x
+  yVel =1; //velocity of y
+  xDirection = 1; //initial x direction
+  yDirection = 1; //initial y direction
+  Gravity=0.98;//set gravity number
+  
+}
+
+void draw (){
+  //background(255);
+  strokeWeight(30);//the size of the point
+  stroke(random(255),random(255),random(255)); // random color of the point 
+  point(x, y);//draw the point
+  x+=(xVel * xDirection); //move by x velocity in the current direction
+  y+=(yVel * yDirection);//move by y velocity in the current direction
+  yVel+=Gravity; //add gravity to velocity
+  
+  if(x > width || x < 0){// bounce back to the sreen if it goes off the screen
+      xDirection*=-1;
+   }
+   if(y > height || y < 0){// bounce back  to the sreen with the gravity if it goes off the screen
+     yVel*=-Gravity;
+   }
+}
